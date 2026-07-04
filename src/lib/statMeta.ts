@@ -1,4 +1,15 @@
+import type { MetricKey } from '@/types'
+
 export const STAT_ORDER = ['likes', 'collects', 'downloads', 'prints', 'boosts', 'followers'] as const
+
+export const statColors: Record<MetricKey, string> = {
+  likes: '#FF4D4D',
+  collects: '#FFC61A',
+  downloads: '#23B5FF',
+  prints: '#39E75F',
+  boosts: '#B05CFF',
+  followers: '#35D8FF',
+}
 
 export const statMeta = {
   likes: { label: 'Likes', shortLabel: 'Likes', tone: 'primary', icon: 'heart' },

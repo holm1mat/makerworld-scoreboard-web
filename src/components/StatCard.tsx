@@ -1,4 +1,5 @@
-import type { MetricSummary } from '@/types'
+import type { MetricKey, MetricSummary } from '@/types'
+import { statColors } from '@/lib/statMeta'
 
 interface StatCardProps {
   summary: MetricSummary
@@ -8,6 +9,7 @@ interface StatCardProps {
     tone: string
     icon: string
   }
+  stat: MetricKey
 }
 
 function StatIcon({ icon }: { icon: string }) {
@@ -53,20 +55,21 @@ function StatIcon({ icon }: { icon: string }) {
   }
 }
 
-export default function StatCard({ summary, meta }: StatCardProps) {
+export default function StatCard({ summary, meta, stat }: StatCardProps) {
   const todayValue = summary.today
   const todayLabel = todayValue === 0 ? '0' : `${todayValue > 0 ? '+' : ''}${todayValue}`
+  const statColor = statColors[stat]
 
   return (
     <article className={`stat-card stat-card--${meta.tone}`}>
-      <div className="stat-card__icon">
+      <div className="stat-card__icon" style={{ color: statColor }}>
         <StatIcon icon={meta.icon} />
       </div>
-      <p className="stat-card__label">{meta.label}</p>
-      <p className="stat-card__total">{summary.total.toLocaleString()}</p>
+      <p className="stat-card__label" style={{ color: '#FFFFFF' }}>{meta.label}</p>
+      <p className="stat-card__total" style={{ color: statColor }}>{summary.total.toLocaleString()}</p>
       <div className="stat-card__today-block">
-        <p className="stat-card__today">{todayLabel}</p>
-        <p className="stat-card__today-label">TODAY</p>
+        <p className="stat-card__today" style={{ color: statColor }}>{todayLabel}</p>
+        <p className="stat-card__today-label" style={{ color: '#FFFFFF' }}>TODAY</p>
       </div>
     </article>
   )

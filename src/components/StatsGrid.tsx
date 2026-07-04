@@ -13,7 +13,7 @@ export default function StatsGrid({ stats }: StatsGridProps) {
         const summary = stats[metric]
         const meta = statMeta[metric]
 
-        return <StatCard key={metric} summary={summary} meta={meta} />
+        return <StatCard key={metric} summary={summary} meta={meta} stat={metric} />
       })}
     </section>
   )

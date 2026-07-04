@@ -1,5 +1,5 @@
 import type { EventItem } from '@/types'
-import { statMeta } from '@/lib/statMeta'
+import { statColors, statMeta } from '@/lib/statMeta'
 
 interface ActivityFeedProps {
   events?: EventItem[]
@@ -77,13 +77,15 @@ export default function ActivityFeed({ events }: ActivityFeedProps) {
             hour: '2-digit',
             minute: '2-digit',
           })
+          const statColor = statColors[event.stat]
+
           return (
             <li key={event.id} className="activity-item">
-              <div className={`activity-icon activity-icon--${event.stat}`}>
+              <div className={`activity-icon activity-icon--${event.stat}`} style={{ color: statColor }}>
                 <EventIcon stat={event.stat} />
               </div>
-              <span className="activity-item__time">{timeString}</span>
-              <span className="activity-item__message">{event.message}</span>
+              <span className="activity-item__time" style={{ color: '#FFFFFF' }}>{timeString}</span>
+              <span className="activity-item__message" style={{ color: statColor }}>{event.message}</span>
             </li>
           )
         })}

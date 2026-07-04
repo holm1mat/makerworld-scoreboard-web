@@ -50,7 +50,7 @@ export default function Dashboard({ scoreboard, events, loading, connectionState
       <div className="dashboard-body">
         <div className="stats-panel">
           <div className="stats-panel__header">
-            <p className="panel-eyebrow dashboard-title">Aggregated stats overview</p>
+            <p className="panel-eyebrow dashboard-title">stats overview</p>
           </div>
           <StatsGrid stats={scoreboard.stats} />
         </div>

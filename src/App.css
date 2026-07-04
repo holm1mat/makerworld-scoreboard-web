@@ -1,8 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Michroma&family=Rajdhani:wght@400;500;600;700&display=swap');
+
 :root {
   color-scheme: dark;
   color: #d8dff9;
-  background: #060913;
-  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: #000000;
+  font-family: 'Rajdhani', Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   font-size: 16px;
   line-height: 1.5;
   text-rendering: optimizeLegibility;
@@ -12,9 +14,7 @@
 body {
   margin: 0;
   min-height: 100vh;
-  background: radial-gradient(circle at top left, rgba(74, 226, 255, 0.12), transparent 24%),
-    radial-gradient(circle at top right, rgba(172, 108, 255, 0.16), transparent 20%),
-    linear-gradient(180deg, #04070f 0%, #070b15 100%);
+  background: #000000;
 }
 
 #root {
@@ -69,7 +69,7 @@ body {
   gap: 12px;
   padding: 16px 20px;
   border-radius: 18px;
-  background: rgba(255, 255, 255, 0.03);
+  background: #1a1a1d;
   border: 1px solid rgba(255, 255, 255, 0.05);
   color: #b7c1e2;
   font-size: 0.95rem;
@@ -105,8 +105,8 @@ body {
   gap: 16px;
   padding: 24px 28px;
   border-radius: 28px;
-  background: rgba(10, 18, 36, 0.92);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: #1a1a1d;
+  border: 1px solid rgba(255, 255, 255, 0.16);
   box-shadow: 0 30px 80px rgba(0, 0, 0, 0.22);
 }
 
@@ -122,7 +122,8 @@ body {
 
 .dashboard-title {
   margin: 0 0 4px;
-  color: #72b7ff;
+  color: #ffffff;
+  font-family: 'Michroma', sans-serif;
   font-size: 0.9rem;
   letter-spacing: 0.24em;
   text-transform: uppercase;
@@ -139,12 +140,14 @@ body {
   font-size: 1.4rem;
   letter-spacing: 0.04em;
   color: #ffffff;
+  font-family: 'Michroma', sans-serif;
   font-weight: 700;
 }
 
 .dashboard-meta {
   margin: 0;
-  color: #8f9acb;
+  color: #ffffff;
+  font-family: 'Rajdhani', sans-serif;
   font-size: 0.95rem;
 }
 
@@ -161,8 +164,11 @@ body {
   gap: 10px;
   padding: 10px 14px;
   border-radius: 999px;
+  font-family: 'Rajdhani', sans-serif;
   font-weight: 700;
   letter-spacing: 0.02em;
+  background: #1a1a1d;
+  border: 1px solid rgba(255, 255, 255, 0.16);
 }
 
 .dashboard-pill--live {
@@ -193,7 +199,7 @@ body {
 .stats-panel,
 .activity-panel {
   border-radius: 28px;
-  background: rgba(10, 18, 34, 0.9);
+  background: #1a1a1d;
   border: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow: 0 30px 80px rgba(0, 0, 0, 0.22);
   min-height: 0;
@@ -213,7 +219,8 @@ body {
 
 .panel-eyebrow {
   margin: 0;
-  color: #4db7ff;
+  color: #ffffff;
+  font-family: 'Michroma', sans-serif;
   font-size: 0.82rem;
   letter-spacing: 0.24em;
   text-transform: uppercase;
@@ -223,6 +230,8 @@ body {
 .stats-panel__header h2,
 .activity-panel__header h2 {
   margin: 0;
+  color: #ffffff;
+  font-family: 'Michroma', sans-serif;
   font-size: 1.45rem;
   letter-spacing: -0.04em;
 }
@@ -239,8 +248,8 @@ body {
   gap: 18px;
   padding: 24px;
   border-radius: 24px;
-  background: rgba(17, 25, 44, 0.92);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: #1a1a1d;
+  border: 1px solid rgba(255, 255, 255, 0.16);
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04), 0 30px 80px rgba(0, 0, 0, 0.22);
 }
 
@@ -266,6 +275,7 @@ body {
 .stat-card__label {
   margin: 0;
   color: #b7c4ff;
+  font-family: 'Rajdhani', sans-serif;
   font-size: 0.78rem;
   letter-spacing: 0.24em;
   text-transform: uppercase;
@@ -274,11 +284,14 @@ body {
 
 .stat-card__total {
   margin: 0;
-  font-size: 2.7rem;
+  font-size: clamp(1.95rem, 2.2vw, 2.5rem);
   line-height: 1;
+  font-family: 'Michroma', sans-serif;
   font-weight: 900;
   letter-spacing: -0.06em;
   color: #ffffff;
+  font-variant-numeric: tabular-nums;
+  overflow-wrap: anywhere;
 }
 
 .stat-card__today-block {
@@ -289,13 +302,16 @@ body {
 .stat-card__today {
   margin: 0;
   color: #7ef09a;
+  font-family: 'Michroma', sans-serif;
   font-size: 1.05rem;
   font-weight: 800;
+  font-variant-numeric: tabular-nums;
 }
 
 .stat-card__today-label {
   margin: 0;
   color: #8b96bc;
+  font-family: 'Rajdhani', sans-serif;
   font-size: 0.78rem;
   letter-spacing: 0.24em;
   text-transform: uppercase;
@@ -348,7 +364,7 @@ body {
 
 .activity-panel__header p {
   margin: 0;
-  color: #8c9ddd;
+  color: #ffffff;
 }
 
 .activity-list {
@@ -369,8 +385,8 @@ body {
   gap: 14px;
   padding: 18px 20px;
   border-radius: 22px;
-  background: rgba(9, 18, 33, 0.92);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: #1a1a1d;
+  border: 1px solid rgba(255, 255, 255, 0.16);
 }
 
 .activity-icon {
@@ -417,12 +433,14 @@ body {
 
 .activity-item__time {
   color: #7d92c6;
+  font-family: 'Rajdhani', sans-serif;
   font-size: 0.92rem;
   font-weight: 700;
 }
 
 .activity-item__message {
   color: #e8ecff;
+  font-family: 'Rajdhani', sans-serif;
   font-weight: 700;
 }
 
@@ -479,6 +497,7 @@ body {
 
 .achievement-card__message {
   margin: 0 0 8px;
+  font-family: 'Michroma', sans-serif;
   font-size: 1.2rem;
   font-weight: 800;
 }
@@ -486,12 +505,15 @@ body {
 .achievement-card__meta {
   margin: 0;
   color: #a5b0d6;
+  font-family: 'Rajdhani', sans-serif;
 }
 
 .achievement-card__delta {
   color: #7ef09a;
+  font-family: 'Michroma', sans-serif;
   font-size: 1.6rem;
   font-weight: 800;
+  font-variant-numeric: tabular-nums;
 }
 
 @keyframes achievement-pop {
@@ -539,8 +561,6 @@ body {
   .activity-item__delta {
     display: none;
   }
-}
-  color: var(--text);
 }
 
 .achievement-card__delta {
