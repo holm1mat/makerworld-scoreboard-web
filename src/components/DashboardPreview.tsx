@@ -11,7 +11,7 @@ interface DashboardPreviewProps {
 export default function DashboardPreview({ scoreboard, events, achievement }: DashboardPreviewProps) {
   return (
     <div className="dashboard-preview">
-      <Dashboard scoreboard={scoreboard} events={events} loading={false} />
+      <Dashboard scoreboard={scoreboard} events={events} loading={false} connectionState="live" />
       {achievement ? <AchievementOverlay achievement={achievement} /> : null}
     </div>
   )
