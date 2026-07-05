@@ -70,7 +70,7 @@ export const mockAchievements: AchievementItem[] = [
     current_value: 32812,
     delta: 117,
     priority: 'takeover',
-    message: 'Like milestone reached!',
+    message: '100 likes today!',
     seen: 0,
   },
   {
@@ -82,7 +82,7 @@ export const mockAchievements: AchievementItem[] = [
     current_value: 100756,
     delta: 569,
     priority: 'takeover',
-    message: 'Collect milestone reached!',
+    message: '500 collects today!',
     seen: 0,
   },
   {
@@ -94,7 +94,7 @@ export const mockAchievements: AchievementItem[] = [
     current_value: 88670,
     delta: 492,
     priority: 'takeover',
-    message: 'Download milestone reached!',
+    message: '400 downloads today!',
     seen: 0,
   },
   {
@@ -106,7 +106,7 @@ export const mockAchievements: AchievementItem[] = [
     current_value: 58480,
     delta: 310,
     priority: 'takeover',
-    message: 'Print milestone reached!',
+    message: '200 prints today!',
     seen: 0,
   },
   {

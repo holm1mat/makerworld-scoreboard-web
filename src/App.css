@@ -492,9 +492,11 @@ body {
   inset: 0;
   display: grid;
   place-items: center;
-  background: rgb(0, 0, 0);
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
   z-index: 20;
   padding: 24px;
+  animation: overlay-fade-in 300ms ease-out;
 }
 
 .achievement-card {
@@ -505,19 +507,24 @@ body {
   gap: 16px;
   padding: 32px 36px;
   border-radius: 24px;
-  background: #000000;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  box-shadow: 0 32px 80px rgba(0, 0, 0, 0.24);
+  background: linear-gradient(135deg, rgba(20, 20, 30, 0.95) 0%, rgba(10, 10, 20, 0.95) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow: 0 32px 80px rgba(0, 0, 0, 0.4), 0 0 60px rgba(255, 255, 255, 0.08);
   width: min(420px, 100%);
   aspect-ratio: 1 / 1;
-  animation: achievement-pop 360ms ease-out;
+  animation: achievement-pop 360ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  backdrop-filter: blur(8px);
+}
+
+.achievement-card--exiting {
+  animation: achievement-pop-out 300ms ease-in !important;
 }
 
 .achievement-card__icon {
   display: grid;
   place-items: center;
-  width: 72px;
-  height: 72px;
+  width: 110px;
+  height: 110px;
   border-radius: 24px;
   background: rgba(255, 255, 255, 0.06);
   font-size: 2rem;
@@ -602,9 +609,20 @@ body {
 }
 
 .achievement-stat-icon-image {
-  width: 50px;
-  height: 50px;
+  width: 90px;
+  height: 90px;
   object-fit: contain;
+}
+
+@keyframes overlay-fade-in {
+  from {
+    background-color: rgba(0, 0, 0, 0);
+    backdrop-filter: blur(0px);
+  }
+  to {
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+  }
 }
 
 @keyframes achievement-pop {
@@ -615,6 +633,17 @@ body {
   to {
     transform: translateY(0) scale(1);
     opacity: 1;
+  }
+}
+
+@keyframes achievement-pop-out {
+  from {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-18px) scale(0.96);
+    opacity: 0;
   }
 }
 
@@ -684,17 +713,6 @@ body {
   background: rgba(248, 159, 65, 0.12);
 }
 
-@keyframes achievement-pop {
-  from {
-    transform: translateY(18px) scale(0.96);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0) scale(1);
-    opacity: 1;
-  }
-}
-
 @media (max-width: 900px) {
   .stats-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -732,4 +750,55 @@ body {
 
 .backend-status span {
   display: inline-block;
+}
+
+.preview-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 20px 24px;
+  border-radius: 20px;
+  background: rgba(30, 30, 45, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(8px);
+}
+
+.preview-controls__info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  color: #b7c1e2;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.preview-controls__buttons {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.preview-controls__button {
+  padding: 10px 18px;
+  border-radius: 12px;
+  background: rgba(77, 134, 255, 0.15);
+  border: 1px solid rgba(77, 134, 255, 0.4);
+  color: #4d86ff;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: all 200ms ease-out;
+}
+
+.preview-controls__button:hover {
+  background: rgba(77, 134, 255, 0.25);
+  border-color: rgba(77, 134, 255, 0.6);
+  box-shadow: 0 0 12px rgba(77, 134, 255, 0.3);
+}
+
+.preview-controls__button:active {
+  transform: scale(0.98);
 }

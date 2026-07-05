@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import type { AchievementItem, MetricKey } from '@/types'
 import { achievementMeta } from '@/lib/achievementMeta'
 import { statColors, statMeta } from '@/lib/statMeta'
@@ -71,32 +72,47 @@ function StatIcon({ stat }: { stat: MetricKey }) {
 }
 
 export default function AchievementOverlay({ achievement }: AchievementOverlayProps) {
-  const meta = achievementMeta[achievement.achievement_type as keyof typeof achievementMeta] ?? {
+  const [displayedAchievement, setDisplayedAchievement] = useState(achievement)
+  const [isExiting, setIsExiting] = useState(false)
+
+  useEffect(() => {
+    // When achievement changes, play exit animation first
+    if (achievement.id !== displayedAchievement.id) {
+      setIsExiting(true)
+      
+      // After exit animation completes (300ms), update achievement and play entry
+      const timer = window.setTimeout(() => {
+        setDisplayedAchievement(achievement)
+        setIsExiting(false)
+      }, 300)
+
+      return () => window.clearTimeout(timer)
+    }
+  }, [achievement.id, displayedAchievement.id])
+
+  const meta = achievementMeta[displayedAchievement.achievement_type as keyof typeof achievementMeta] ?? {
     emoji: '🏆',
     tone: 'default',
     label: 'Achievement unlocked',
   }
-  const statColor = statColors[achievement.stat]
-  const statName = formatStatName(achievement.stat, achievement.threshold)
-  const deltaLabel = formatDeltaLabel(achievement.stat, achievement.delta)
+  const statColor = statColors[displayedAchievement.stat]
+  const statName = formatStatName(displayedAchievement.stat, displayedAchievement.threshold)
+  const deltaLabel = formatDeltaLabel(displayedAchievement.stat, displayedAchievement.delta)
 
   return (
     <div className="achievement-overlay" role="status" aria-live="polite">
-      <div className={`achievement-card achievement-card--${meta.tone}`}>
-        <span className="achievement-card__icon" aria-hidden="true" style={{ color: statColor }}>
-          {meta.emoji}
-        </span>
+      <div className={`achievement-card achievement-card--${meta.tone} ${isExiting ? 'achievement-card--exiting' : ''}`}>
+        <div className="achievement-card__icon" style={{ color: statColor }}>
+          <StatIcon stat={displayedAchievement.stat} />
+        </div>
         <div className="achievement-card__content">
-          <p className="achievement-card__message" style={{ color: statColor }}>{achievement.message}</p>
+          <p className="achievement-card__message" style={{ color: statColor }}>{displayedAchievement.message}</p>
         </div>
         <p className="achievement-card__delta-label">{deltaLabel}</p>
         <div className="achievement-card__threshold-card">
-          <div className="achievement-card__stat-icon-wrapper" style={{ color: statColor }}>
-            <StatIcon stat={achievement.stat} />
-          </div>
           <p className="achievement-card__threshold-label">Threshold</p>
           <p className="achievement-card__threshold-value" style={{ color: statColor }}>
-            {achievement.threshold.toLocaleString()}
+            {displayedAchievement.threshold.toLocaleString()}
           </p>
           <p className="achievement-card__threshold-stat" style={{ color: statColor }}>
             {statName}
