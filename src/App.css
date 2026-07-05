@@ -259,7 +259,7 @@ body {
   display: grid;
   place-items: center;
   justify-self: center;
-  border-radius: 22px;
+  border-radius: 14px;
   background: rgba(255, 255, 255, 0.06);
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
 }
@@ -270,6 +270,13 @@ body {
   fill: none;
   stroke: currentColor;
   stroke-width: 1.9;
+}
+
+.stat-card__icon img,
+.stat-icon-image {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
 }
 
 .stat-card__label {
@@ -380,21 +387,21 @@ body {
 
 .activity-item {
   display: grid;
-  grid-template-columns: auto minmax(60px, 96px) minmax(0, 1fr);
+  grid-template-columns: auto minmax(60px, 90px) minmax(0, 1fr);
   align-items: center;
-  gap: 14px;
-  padding: 18px 20px;
-  border-radius: 22px;
+  gap: 4px;
+  padding: 10px 10px;
+  border-radius: 16px;
   background: #1a1a1d;
   border: 1px solid rgba(255, 255, 255, 0.16);
 }
 
 .activity-icon {
-  width: 52px;
-  height: 52px;
+  width: 36px;
+  height: 36px;
   display: grid;
   place-items: center;
-  border-radius: 18px;
+  border-radius: 12px;
   background: rgba(255, 255, 255, 0.06);
   color: #7ef09a;
 }
@@ -405,6 +412,13 @@ body {
   fill: none;
   stroke: currentColor;
   stroke-width: 1.8;
+}
+
+.activity-icon img,
+.event-icon-image {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
 }
 
 .activity-icon--likes {
@@ -561,6 +575,21 @@ body {
   font-size: 0.95rem;
   font-weight: 700;
   text-transform: capitalize;
+}
+
+.achievement-card__stat-icon-wrapper {
+  width: 60px;
+  height: 60px;
+  display: grid;
+  place-items: center;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.achievement-stat-icon-image {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
 }
 
 @keyframes achievement-pop {

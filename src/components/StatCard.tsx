@@ -1,5 +1,11 @@
 import type { MetricKey, MetricSummary } from '@/types'
 import { statColors } from '@/lib/statMeta'
+import likeIcon from '@/assets/icons/icon-like-120.png'
+import collectIcon from '@/assets/icons/icon-collect-120.png'
+import downloadIcon from '@/assets/icons/icon-download-120.png'
+import printIcon from '@/assets/icons/icon-print-120.png'
+import boostIcon from '@/assets/icons/icon-boost-120.png'
+import followerIcon from '@/assets/icons/icon-follower-120.png'
 
 interface StatCardProps {
   summary: MetricSummary
@@ -12,47 +18,21 @@ interface StatCardProps {
   stat: MetricKey
 }
 
+const iconMap: Record<string, string> = {
+  heart: likeIcon,
+  folder: collectIcon,
+  download: downloadIcon,
+  printer: printIcon,
+  rocket: boostIcon,
+  users: followerIcon,
+}
+
 function StatIcon({ icon }: { icon: string }) {
-  switch (icon) {
-    case 'heart':
-      return (
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M12 21s-7.5-4.35-10-8.5C-0.5 9 1.5 5 4.5 5c1.4 0 2.8.7 3.5 1.8C8.7 5.7 10.1 5 11.5 5 14.5 5 16.5 9 16 12.5 14.5 16.65 12 21 12 21z" />
-        </svg>
-      )
-    case 'folder':
-      return (
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M3 7a2 2 0 0 1 2-2h5l2 2h7a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z" />
-        </svg>
-      )
-    case 'download':
-      return (
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M12 3v12m0 0l-4-4m4 4l4-4M5 17h14" />
-        </svg>
-      )
-    case 'printer':
-      return (
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M6 9V4h12v5M6 14v6h12v-6M6 14h12" />
-        </svg>
-      )
-    case 'rocket':
-      return (
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M6 18s4-1 6-3 3-6 3-6 1 1 2 2c1 1 1.5 3 1.5 3s-2 0-4 1c-2 1-4 3-4 3zM4 20c1-2 3-3 3-3" />
-        </svg>
-      )
-    case 'users':
-      return (
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M7 11a4 4 0 1 1 8 0 4 4 0 0 1-8 0zm-4 9s1-4 5-4 5 4 5 4" />
-        </svg>
-      )
-    default:
-      return <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8" /></svg>
+  const iconSrc = iconMap[icon]
+  if (!iconSrc) {
+    return <div className="stat-icon-placeholder" aria-hidden="true" />
   }
+  return <img src={iconSrc} alt="" aria-hidden="true" className="stat-icon-image" />
 }
 
 export default function StatCard({ summary, meta, stat }: StatCardProps) {
