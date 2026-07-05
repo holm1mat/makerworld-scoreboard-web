@@ -47,19 +47,6 @@ export const mockEvents: EventItem[] = [
   },
 ]
 
-export const mockAchievement: AchievementItem = {
-  id: 4,
-  created_at: '2026-07-03T20:44:10.000Z',
-  achievement_type: 'BOOST_RECEIVED',
-  stat: 'boosts',
-  threshold: 1,
-  current_value: 2124,
-  delta: 1,
-  priority: 'takeover',
-  message: 'Boost received!',
-  seen: 0,
-}
-
 export const mockAchievements: AchievementItem[] = [
   {
     id: 1,

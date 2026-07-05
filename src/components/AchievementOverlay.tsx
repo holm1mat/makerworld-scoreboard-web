@@ -91,9 +91,7 @@ export default function AchievementOverlay({ achievement }: AchievementOverlayPr
   }, [achievement.id, displayedAchievement.id])
 
   const meta = achievementMeta[displayedAchievement.achievement_type as keyof typeof achievementMeta] ?? {
-    emoji: '🏆',
     tone: 'default',
-    label: 'Achievement unlocked',
   }
   const statColor = statColors[displayedAchievement.stat]
   const statName = formatStatName(displayedAchievement.stat, displayedAchievement.threshold)
