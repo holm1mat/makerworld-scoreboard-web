@@ -1,5 +1,6 @@
 import type { MetricKey, MetricSummary } from '@/types'
 import { statColors } from '@/lib/statMeta'
+import { useDailyAchievements } from '@/hooks/useDailyAchievements'
 import likeIcon from '@/assets/icons/icon-like-120.png'
 import collectIcon from '@/assets/icons/icon-collect-120.png'
 import downloadIcon from '@/assets/icons/icon-download-120.png'
@@ -39,6 +40,8 @@ export default function StatCard({ summary, meta, stat }: StatCardProps) {
   const todayValue = summary.today
   const todayLabel = todayValue === 0 ? '0' : `${todayValue > 0 ? '+' : ''}${todayValue}`
   const statColor = statColors[stat]
+  const { hasAchievementForStat } = useDailyAchievements()
+  const hasAchievement = hasAchievementForStat(stat)
 
   return (
     <article className={`stat-card stat-card--${meta.tone}`}>
@@ -51,6 +54,11 @@ export default function StatCard({ summary, meta, stat }: StatCardProps) {
         <p className="stat-card__today" style={{ color: statColor }}>{todayLabel}</p>
         <p className="stat-card__today-label" style={{ color: '#FFFFFF' }}>TODAY</p>
       </div>
+      {hasAchievement && (
+        <div className="stat-card__achievement-badge">
+          🏆
+        </div>
+      )}
     </article>
   )
 }

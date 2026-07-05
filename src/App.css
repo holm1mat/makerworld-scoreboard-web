@@ -251,6 +251,7 @@ body {
   background: #1a1a1d;
   border: 1px solid rgba(255, 255, 255, 0.16);
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04), 0 30px 80px rgba(0, 0, 0, 0.22);
+  position: relative;
 }
 
 .stat-card__icon {
@@ -352,6 +353,20 @@ body {
 .stat-card--social .stat-card__icon,
 .stat-card--social {
   color: #6ac7ff;
+}
+
+.stat-card__achievement-badge {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  width: 32px;
+  height: 32px;
+  font-size: 24px;
+  line-height: 32px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .activity-panel {
