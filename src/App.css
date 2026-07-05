@@ -195,7 +195,7 @@ body {
 
 .stat-card {
   display: grid;
-  gap: 18px;
+  gap: 14px;
   padding: 24px;
   border-radius: 24px;
   background: #1a1a1d;
@@ -362,11 +362,11 @@ body {
 }
 
 .activity-icon {
-  width: 36px;
-  height: 36px;
+  width: 32px;
+  height: 32px;
   display: grid;
   place-items: center;
-  border-radius: 12px;
+  border-radius: 8px;
   background: rgba(255, 255, 255, 0.06);
   color: #7ef09a;
 }
